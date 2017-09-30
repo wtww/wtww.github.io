@@ -58,7 +58,8 @@
                         // var now_ta = $("#result_text").val();
                         // var get_text = results[i][0].transcript;
                         // $("#result_text").val(now_ta+get_text);
-                        document.getElementById('result_text').innerHTML = results[i][0].transcript;
+                        var now_ta = document.getElementById('result_text').innerHTML;
+                        document.getElementById('result_text').innerHTML = now_ta +"<br>"+ results[i][0].transcript;
                         vr_function();
                     }
                     else {
@@ -69,7 +70,8 @@
                         // var now_ta = $("#result_text").val();
                         // var get_text = "[途中経過] " + results[i][0].transcript;
                         // $("#result_text").val(now_ta+get_text);
-                        document.getElementById('result_text').innerHTML = "[途中経過] " + results[i][0].transcript;
+                        var now_ta = document.getElementById('result_text').innerHTML;
+                        document.getElementById('result_text').innerHTML = now_ta +"<br>"+ "[途中経過] " + results[i][0].transcript;
                         flag_speech = 1;
                     }
                 }
