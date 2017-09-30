@@ -16,7 +16,7 @@
         var grammar = '#JSGF V1.0; grammar colors; public <color> = `えっと | あの  | あっ;'
         var speechRecognitionList = new SpeechGrammarList();
         speechRecognitionList.addFromString(grammar, 1);
-        recognition.grammars = speechRecognitionList;
+        //recognition.grammars = speechRecognitionList;
 
         function finish(){
             recognition.stop();
@@ -43,6 +43,9 @@
                 document.getElementById('status').innerHTML = "停止中";
                 vr_function();
             };
+            recognition.onnomatch = function() {
+                document.getElementById('status').innerHTML = "不一致";
+            }
 
             recognition.onresult = function (event) {
                 var results = event.results;
