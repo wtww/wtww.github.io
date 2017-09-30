@@ -79,23 +79,25 @@
                 var results = event.results;
                 for (var i = event.resultIndex; i < results.length; i++) {
                     if (results[i].isFinal) {
-                        // var now_ta = document.getElementById('result_text').innerHTML;
-                        // var get_text = results[i][0].transcript;
-                        // document.getElementById('result_text').innerHTML　= now_ta+get_text;
+
+                        var now_ta = document.getElementById('onresult_text').innerHTML;
+                        var get_text = results[i][0].transcript;
+                        document.getElementById('onresult_text').innerHTML　= now_ta+'<br>'+get_text;
 
                         // var now_ta = $("#result_text").val();
                         // var get_text = results[i][0].transcript;
                         // $("#result_text").val(now_ta+get_text);
-                        document.getElementById('result_text').innerHTML = results[i][0].transcript;
-                        const request = new XMLHttpRequest();
-                        //サーバに対してリクエスト送信
+                        // document.getElementById('result_text').innerHTML = results[i][0].transcript;
 
-                        request.open("GET", `http://192.168.100.44:8080/demo/`+results[i][0].transcript);
-                        request.addEventListener("load", (event) => {
-                            console.log(event.target.status); // => 200
-                            console.log(event.target.responseText); // => "{...}"
-                        });
-                        request.send();
+                        // const request = new XMLHttpRequest();
+                        // //サーバに対してリクエスト送信
+
+                        // request.open("GET", `http://192.168.100.44:8080/demo/`+results[i][0].transcript);
+                        // request.addEventListener("load", (event) => {
+                        //     console.log(event.target.status); // => 200
+                        //     console.log(event.target.responseText); // => "{...}"
+                        // });
+                        // request.send();
 
                         vr_function();
                     }
@@ -124,7 +126,7 @@
 </head>
 
 <body>
-    <label>Ver 12</label>
+    <label>Ver 13</label>
     <br>
     <textarea id="result_text" cols="100" rows="10">
     </textarea>
@@ -135,6 +137,8 @@
     <input type="button" onClick="start();" value="音認開始">
     <br>
     <input type="button" onClick="finish();" value="停止">
+    <br>
+    <p><label id="onresult_text"></label></p>
 </body>
 
 </html>
