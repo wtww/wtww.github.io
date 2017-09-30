@@ -90,7 +90,7 @@
                         // $("#result_text").val(now_ta+get_text);
                         // document.getElementById('result_text').innerHTML = results[i][0].transcript;
 
-                        const request = new XMLHttpRequest();
+                        var request = new XMLHttpRequest();
                         // //サーバに対してリクエスト送信
                         
                         //request.open("GET", "http://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript);
@@ -106,7 +106,7 @@
                             }else{
                                 document.getElementById('onresult_text').innerHTML　= now_ta+"[NG]";
                             }
-                            document.getElementById('debug').innerHTML　= request.statusText　+" , "+ request.readyState +" , "+ request.responseText;
+                            document.getElementById('debug').innerHTML　= request.status　+" , "+ request.readyState +" , "+ request.responseText;
                             
                             
                         };
