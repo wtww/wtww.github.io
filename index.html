@@ -96,7 +96,6 @@
                         //request.open("GET", "http://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript);
                         //var sURL="http://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060";
                         var sURL="http://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript;
-                        request.open('GET', sURL);
                         request.onreadystatechange = function(){
                             console.log(request.status); // => 200
                             console.log(request.responseText); // => "{...}"
@@ -112,7 +111,8 @@
                             
                             
                         };
-
+                        request.open('GET', sURL);
+                        
                         request.send(null);
 
                         vr_function();
