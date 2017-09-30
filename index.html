@@ -94,7 +94,8 @@
                         // //サーバに対してリクエスト送信
                         
                         //request.open("GET", "http://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript);
-                        var sURL="http://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060";
+                        //var sURL="http://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060";
+                        var sURL="http://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript;
                         request.open('GET', sURL);
                         request.onreadystatechange = function(){
                             console.log(request.status); // => 200
@@ -112,7 +113,8 @@
                             
                         };
 
-                        request.send();
+                        request.send(null);
+
                         vr_function();
                     }
                     else {
@@ -140,7 +142,7 @@
 </head>
 
 <body>
-    <label id="ver">Ver 14.7</label>
+    <label id="ver">Ver 14.8</label>
     <br>
     <label id="debug"></label>
     <br>
