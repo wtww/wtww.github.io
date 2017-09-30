@@ -105,6 +105,7 @@
                             }else{
                                 document.getElementById('onresult_text').innerHTML　= now_ta+"[NG]";
                             }
+                            document.getElementById('debug').value　= request.status　+" , "+ request.readyState +" , "+ request.responseText;
                             
                             
                         };
@@ -137,7 +138,9 @@
 </head>
 
 <body>
-    <label id="ver">Ver 14.3</label>
+    <label id="ver">Ver 14.4</label>
+    <br>
+    <label id="debug"></label>
     <br>
     <textarea id="result_text" cols="100" rows="10">
     </textarea>
