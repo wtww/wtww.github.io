@@ -92,8 +92,9 @@
 
                         const request = new XMLHttpRequest();
                         // //サーバに対してリクエスト送信
-
-                        request.open("GET", "http://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript);
+                        
+                        //request.open("GET", "http://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript);
+                        request.open("GET", "http://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060");
                         request.onreadystatechange = function(){
                             console.log(request.status); // => 200
                             console.log(request.responseText); // => "{...}"
@@ -138,7 +139,7 @@
 </head>
 
 <body>
-    <label id="ver">Ver 14.6</label>
+    <label id="ver">Ver 14.7</label>
     <br>
     <label id="debug"></label>
     <br>
