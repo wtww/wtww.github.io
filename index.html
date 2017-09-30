@@ -45,6 +45,7 @@
             };
             recognition.onnomatch = function() {
                 document.getElementById('status').innerHTML = "不一致";
+                vr_function();
             }
 
             recognition.onresult = function (event) {
@@ -58,8 +59,7 @@
                         // var now_ta = $("#result_text").val();
                         // var get_text = results[i][0].transcript;
                         // $("#result_text").val(now_ta+get_text);
-                        var now_ta = document.getElementById('result_text').innerHTML;
-                        document.getElementById('result_text').innerHTML = now_ta +"<br>"+ results[i][0].transcript;
+                        document.getElementById('result_text').innerHTML = results[i][0].transcript;
                         vr_function();
                     }
                     else {
@@ -70,11 +70,11 @@
                         // var now_ta = $("#result_text").val();
                         // var get_text = "[途中経過] " + results[i][0].transcript;
                         // $("#result_text").val(now_ta+get_text);
-                        var now_ta = document.getElementById('result_text').innerHTML;
-                        document.getElementById('result_text').innerHTML = now_ta +"<br>"+ "[途中経過] " + results[i][0].transcript;
+                        document.getElementById('result_text').innerHTML = "[途中経過] " + results[i][0].transcript;
                         flag_speech = 1;
                     }
                 }
+                recognition = new webkitSpeechRecognition();
             }
             flag_speech = 0;
             
@@ -84,7 +84,7 @@
 </head>
 
 <body>
-    <label>Ver 9</label>
+    <label>Ver 10</label>
     <br>
     <textarea id="result_text" cols="100" rows="10">
     </textarea>
