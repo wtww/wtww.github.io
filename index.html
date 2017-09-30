@@ -87,6 +87,16 @@
                         // var get_text = results[i][0].transcript;
                         // $("#result_text").val(now_ta+get_text);
                         document.getElementById('result_text').innerHTML = results[i][0].transcript;
+                        const request = new XMLHttpRequest();
+                        //サーバに対してリクエスト送信
+
+                        request.open("GET", `http://192.168.100.44:8080/demo/`+results[i][0].transcript);
+                        request.addEventListener("load", (event) => {
+                            console.log(event.target.status); // => 200
+                            console.log(event.target.responseText); // => "{...}"
+                        });
+                        request.send();
+
                         vr_function();
                     }
                     else {
@@ -114,7 +124,7 @@
 </head>
 
 <body>
-    <label>Ver 11</label>
+    <label>Ver 12</label>
     <br>
     <textarea id="result_text" cols="100" rows="10">
     </textarea>
