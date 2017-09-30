@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <meta charset="UTF-8" />
     <title>Web Speech API</title>
@@ -13,6 +12,7 @@
         recognition.addEventListener('result', function (event) {
             var text = event.results.item(0).item(0).transcript;
             $("#result_text").val(text);
+            recognition.start();
         }, false);
 
         // 録音開始
