@@ -15,6 +15,11 @@
         function finish(){
             recognition.stop();
         }
+        function start(){
+            document.getElementById('status').innerHTML = "start";
+            vr_function();
+
+        }
 
         function vr_function() {
             recognition.onsoundstart = function () {
@@ -61,7 +66,7 @@
                 }
             }
             flag_speech = 0;
-            document.getElementById('status').innerHTML = "start";
+            
             recognition.start();
         }
     </script>
@@ -76,7 +81,7 @@
     <textarea id="status" cols="100" rows="1">
     </textarea>
     <br>
-    <input type="button" onClick="vr_function();" value="音認開始">
+    <input type="button" onClick="start();" value="音認開始">
     <br>
     <input type="button" onClick="finish();" value="停止">
 </body>
