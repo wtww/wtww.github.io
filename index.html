@@ -90,30 +90,55 @@
                         // $("#result_text").val(now_ta+get_text);
                         // document.getElementById('result_text').innerHTML = results[i][0].transcript;
 
-                        var request = new XMLHttpRequest();
+                        //var request = new XMLHttpRequest();
                         // //サーバに対してリクエスト送信
                         
                         //request.open("GET", "http://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript);
                         //var sURL="http://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060";
-                        var sURL="https://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript;
-                        request.onreadystatechange = function(){
-                            console.log(request.status); // => 200
-                            console.log(request.responseText); // => "{...}"
+                        // var sURL="https://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript;
+                        // request.onreadystatechange = function(){
+                        //     console.log(request.status); // => 200
+                        //     console.log(request.responseText); // => "{...}"
                             
                             
-                            now_ta = document.getElementById('onresult_text').innerHTML;
-                            if(request.readyState == 4 && request.status == 200){
-                                document.getElementById('onresult_text').innerHTML　= now_ta+"[OK]";
-                            }else{
-                                document.getElementById('onresult_text').innerHTML　= now_ta+"[NG]";
-                            }
-                            document.getElementById('debug').innerHTML　= request.status　+" , "+ request.readyState +" , "+ request.responseText;
+                        //     now_ta = document.getElementById('onresult_text').innerHTML;
+                        //     if(request.readyState == 4 && request.status == 200){
+                        //         document.getElementById('onresult_text').innerHTML　= now_ta+"[OK]";
+                        //     }else{
+                        //         document.getElementById('onresult_text').innerHTML　= now_ta+"[NG]";
+                        //     }
+                        //     document.getElementById('debug').innerHTML　= request.status　+" , "+ request.readyState +" , "+ request.responseText;
                             
                             
-                        };
-                        request.open('GET', sURL);
+                        // };
+                        // request.open('GET', sURL);
                         
-                        request.send(null);
+                        // request.send(null);
+
+                        var xdr = new XDomainRequest();
+                        var sURL="https://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript;
+                        now_ta = document.getElementById('onresult_text').innerHTML;
+
+
+                        xdr.open("get", sURL);
+
+                        xdr.onprogress = function () {
+                            //Progress
+                        };
+
+                        xdr.ontimeout = function () { 
+                            //Timeout
+                        };
+
+                        xdr.onerror = function () { 
+                            //Error Occured
+                            document.getElementById('onresult_text').innerHTML　= now_ta+"[NG]";
+                        };
+
+                        xdr.onload = function() {
+                            //success(xdr.responseText);
+                            document.getElementById('onresult_text').innerHTML　= now_ta+"[OK]";
+                        }
 
                         vr_function();
                     }
@@ -142,7 +167,7 @@
 </head>
 
 <body>
-    <label id="ver">Ver 14.8</label>
+    <label id="ver">Ver 14.9</label>
     <br>
     <label id="debug"></label>
     <br>
