@@ -7,6 +7,10 @@
         window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
         var recognition = new webkitSpeechRecognition();
         recognition.lang = 'ja';
+        recognition.interimResults = true;//変換中も認識する
+        recognition.continuous = true;//音声認識を継続させる
+
+        recognition.onsoudstart 
 
         // 録音終了時トリガー
         recognition.addEventListener('result', function (event) {
@@ -19,13 +23,40 @@
             recognition.start();
         }
 
+        recognition.onsoundstart = function () {
+            document.getElementById('status').innerHTML = "認識中";
+        };
+        recognition.onnomatch = function () {
+            document.getElementById('status').innerHTML = "もう一度試してください";
+        };
+        recognition.onerror = function () {
+            document.getElementById('status').innerHTML = "エラー";
+        };
+        recognition.onsoundend = function () {
+            document.getElementById('status').innerHTML = "停止中";
+        };
+
+        recognition.onresult = function (event) {
+            var results = event.results;
+            for (var i = event.resultIndex; i < results.length; i++) {
+                if (results[i].isFinal)
+                    document.getElementById('result_text').innerHTML = results[i][0].transcript;
+                else
+                    document.getElementById('result_text').innerHTML = "[途中経過] " + results[i][0].transcript;
+            }
+        }
+
     </script>
 </head>
 
 <body>
     <label>Ver 3</label>
+    <br>
     <textarea id="result_text" cols="100" rows="10">
-</textarea>
+    </textarea>
+    <br>
+    <textarea id="result_text" cols="100" rows="1">
+    </textarea>
     <br />
     <input type="button" onClick="record()" value="録音開始" />
 </body>
