@@ -105,7 +105,7 @@
                             }else{
                                 document.getElementById('onresult_text').innerHTML　= now_ta+"[NG]";
                             }
-                            document.getElementById('debug').innerHTML　= request.status　+" , "+ request.readyState +" , "+ request.responseText;
+                            document.getElementById('debug').innerHTML　= request.statusText　+" , "+ request.readyState +" , "+ request.responseText;
                             
                             
                         };
@@ -138,7 +138,7 @@
 </head>
 
 <body>
-    <label id="ver">Ver 14.5</label>
+    <label id="ver">Ver 14.6</label>
     <br>
     <label id="debug"></label>
     <br>
