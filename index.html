@@ -12,6 +12,12 @@
         recognition.interimResults = true;
         recognition.continuous = true;
 
+        //grammarが語彙リスト
+        var grammar = '#JSGF V1.0; grammar colors; public <color> = `えーと | あのー ;'
+        var speechRecognitionList = new SpeechGrammarList();
+        speechRecognitionList.addFromString(grammar, 1);
+        recognition.grammars = speechRecognitionList;
+
         function finish(){
             recognition.stop();
         }
