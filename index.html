@@ -100,7 +100,7 @@
                             
                             
                             now_ta = document.getElementById('onresult_text').innerHTML;
-                            if(request.readyState === 4 && request.status == 200){
+                            if(request.readyState == 4 && request.status == 200){
                                 document.getElementById('onresult_text').innerHTML　= now_ta+"[OK]";
                             }else{
                                 document.getElementById('onresult_text').innerHTML　= now_ta+"[NG]";
