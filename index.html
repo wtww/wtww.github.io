@@ -13,7 +13,7 @@
         recognition.continuous = true;
 
         //grammarが語彙リスト
-        var grammar = '#JSGF V1.0; grammar colors; public <color> = `えーと | あのー ;'
+        var grammar = '#JSGF V1.0; grammar colors; public <color> = `えっと | あの  | あっ;'
         var speechRecognitionList = new SpeechGrammarList();
         speechRecognitionList.addFromString(grammar, 1);
         recognition.grammars = speechRecognitionList;
@@ -79,7 +79,7 @@
 </head>
 
 <body>
-    <label>Ver 6</label>
+    <label>Ver 7</label>
     <br>
     <textarea id="result_text" cols="100" rows="10">
     </textarea>
