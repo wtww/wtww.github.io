@@ -64,11 +64,11 @@
             };
             recognition.onsoundend = function () {
                 document.getElementById('status').innerHTML = "停止中";
-                recognition = new webkitSpeechRecognition();
-                recognition.lang = 'ja';
-                recognition.interimResults = true;
-                recognition.continuous = true;
-                vr_function();
+                // recognition = new webkitSpeechRecognition();
+                // recognition.lang = 'ja';
+                // recognition.interimResults = true;
+                // recognition.continuous = true;
+                // vr_function();
             };
             recognition.onnomatch = function() {
                 document.getElementById('status').innerHTML = "不一致";
