@@ -37,16 +37,24 @@
                 var results = event.results;
                 for (var i = event.resultIndex; i < results.length; i++) {
                     if (results[i].isFinal) {
-                        var now_ta = $("#result_text").val();
+                        var now_ta = document.getElementById('result_text').innerHTML;
                         var get_text = results[i][0].transcript;
-                        $("#result_text").val(now_ta+get_text);
+                        document.getElementById('result_text').innerHTML　= now_ta+get_text;
+
+                        // var now_ta = $("#result_text").val();
+                        // var get_text = results[i][0].transcript;
+                        // $("#result_text").val(now_ta+get_text);
                         //document.getElementById('result_text').innerHTML = results[i][0].transcript;
                         vr_function();
                     }
                     else {
-                        var now_ta = $("#result_text").val();
+                        var now_ta = document.getElementById('result_text').innerHTML;
                         var get_text = "[途中経過] " + results[i][0].transcript;
-                        $("#result_text").val(now_ta+get_text);
+                        document.getElementById('result_text').innerHTML　= now_ta+get_text;
+                        
+                        // var now_ta = $("#result_text").val();
+                        // var get_text = "[途中経過] " + results[i][0].transcript;
+                        // $("#result_text").val(now_ta+get_text);
                         //document.getElementById('result_text').innerHTML = "[途中経過] " + results[i][0].transcript;
                         flag_speech = 1;
                     }
