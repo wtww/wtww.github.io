@@ -28,6 +28,29 @@
         }
 
         function vr_function() {
+            recognition.onstart = function () {
+                document.getElementById('status').innerHTML = "サービススタート";
+            };
+
+            recognition.onend = function () {
+                document.getElementById('status').innerHTML = "サービス終了";
+            };
+
+            recognition.onaudiostart = function () {
+                document.getElementById('status').innerHTML = "キャプチャ開始";
+            };
+
+            recognition.onaudioend = function () {
+                document.getElementById('status').innerHTML = "キャプチャ終了";
+            };
+            recognition.onspeechstart = function () {
+                document.getElementById('status').innerHTML = "認識音声開始";
+            };
+
+            recognition.onspeechend = function () {
+                document.getElementById('status').innerHTML = "認識音声終了";
+            };
+
             recognition.onsoundstart = function () {
                 document.getElementById('status').innerHTML = "認識中";
             };
@@ -41,6 +64,10 @@
             };
             recognition.onsoundend = function () {
                 document.getElementById('status').innerHTML = "停止中";
+                recognition = new webkitSpeechRecognition();
+                recognition.lang = 'ja';
+                recognition.interimResults = true;
+                recognition.continuous = true;
                 vr_function();
             };
             recognition.onnomatch = function() {
@@ -75,6 +102,9 @@
                     }
                 }
                 recognition = new webkitSpeechRecognition();
+                recognition.lang = 'ja';
+                recognition.interimResults = true;
+                recognition.continuous = true;
             }
             flag_speech = 0;
             
