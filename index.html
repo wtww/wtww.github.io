@@ -18,7 +18,7 @@
         var grammar = '#JSGF V1.0; public <color> = ` えっと | えーと | えーっと | あの | あっ | えっーと ;'
         var speechRecognitionList = new SpeechGrammarList();
         speechRecognitionList.addFromString(grammar, 1);
-        recognition.grammars = speechRecognitionList;
+        
 
         function finish(){
             recognition.abort();//中断
@@ -39,6 +39,8 @@
             recognition.lang = 'ja';
             recognition.interimResults = false;
             recognition.continuous = true;
+            //語彙リスト
+            recognition.grammars = speechRecognitionList;
 
             recognition.onstart = function () {
                 document.getElementById('status').innerHTML = "サービススタート";
@@ -141,7 +143,7 @@
 
 <body>
 
-    <label id="ver">音声認識ページ　Ver 14.13</label>
+    <label id="ver">音声認識ページ　Ver 14.14</label>
     <br>
     <label >HTTPSで接続しマイクが反応するようにしてください。</label>
     <br>
