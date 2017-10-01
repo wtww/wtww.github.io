@@ -7,10 +7,10 @@
     <script>
         var flag_speech = 0;
         window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-        var recognition = new webkitSpeechRecognition();
-        recognition.lang = 'ja';
-        recognition.interimResults = true;
-        recognition.continuous = true;
+        var recognition = null;
+        // recognition.lang = 'ja';
+        // recognition.interimResults = true;
+        // recognition.continuous = true;
 
         //grammarが語彙リスト
         //var grammar = '#JSGF V1.0; public <color> = ` えっと | えーと | えーっと | あの | あっ | えっーと ;'
@@ -29,6 +29,11 @@
         }
 
         function vr_function() {
+            recognition = new webkitSpeechRecognition();
+            recognition.lang = 'ja';
+            recognition.interimResults = true;
+            recognition.continuous = true;
+
             recognition.onstart = function () {
                 document.getElementById('status').innerHTML = "サービススタート";
             };
@@ -62,14 +67,10 @@
                 document.getElementById('status').innerHTML = "エラー";
                 if (flag_speech == 0){
                     vr_function();
-                    }
+                }
             };
             recognition.onsoundend = function () {
                 document.getElementById('status').innerHTML = "停止中";
-                // recognition = new webkitSpeechRecognition();
-                // recognition.lang = 'ja';
-                // recognition.interimResults = true;
-                // recognition.continuous = true;
                 vr_function();
             };
             recognition.onnomatch = function() {
@@ -84,37 +85,6 @@
 
                         var now_ta = document.getElementById('onresult_text').innerHTML;
                         var get_text = results[i][0].transcript;
-                        
-
-                        // var now_ta = $("#result_text").val();
-                        // var get_text = results[i][0].transcript;
-                        // $("#result_text").val(now_ta+get_text);
-                        // document.getElementById('result_text').innerHTML = results[i][0].transcript;
-
-                        //var request = new XMLHttpRequest();
-                        // //サーバに対してリクエスト送信
-                        
-                        //request.open("GET", "http://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript);
-                        //var sURL="http://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060";
-                        // var sURL="https://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript;
-                        // request.onreadystatechange = function(){
-                        //     console.log(request.status); // => 200
-                        //     console.log(request.responseText); // => "{...}"
-                            
-                            
-                        //     now_ta = document.getElementById('onresult_text').innerHTML;
-                        //     if(request.readyState == 4 && request.status == 200){
-                        //         document.getElementById('onresult_text').innerHTML　= now_ta+"[OK]";
-                        //     }else{
-                        //         document.getElementById('onresult_text').innerHTML　= now_ta+"[NG]";
-                        //     }
-                        //     document.getElementById('debug').innerHTML　= request.status　+" , "+ request.readyState +" , "+ request.responseText;
-                            
-                            
-                        // };
-                        // request.open('GET', sURL);
-                        
-                        // request.send(null);
 
                         var xdr = new XMLHttpRequest();
                         var sURL="https://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript;
@@ -141,12 +111,6 @@
                             document.getElementById('onresult_text').innerHTML　= get_text+"[OK]"+'<br>'+now_ta;
                         }
                         xdr.send();
-
-                        recognition = new webkitSpeechRecognition();
-                        recognition.lang = 'ja';
-                        recognition.interimResults = true;
-                        recognition.continuous = true;
-
                         vr_function();
                     }
                     else {
@@ -170,7 +134,7 @@
 </head>
 
 <body>
-    <label id="ver">Ver 14.12</label>
+    <label id="ver">Ver 14.13</label>
     <br>
     <label id="debug"></label>
     <br>
