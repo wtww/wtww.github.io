@@ -22,14 +22,13 @@
         
 
         function finish(){
-            recognition.abort();//中断
-            recognition.stop();//停止
+            //リロードが一番確度の高い終了方法だった
+            location.reload();
 
             if(recognition != null){
                 recognition = null;
             }
-            //リロード
-            location.reload();
+
         }
         function start(){
             document.getElementById('status').innerHTML = "start";
@@ -146,7 +145,7 @@
 
 <body>
 
-    <label id="ver">音声認識ページ　Ver 15</label>
+    <label id="ver">音声認識ページ　Ver 16</label>
     <br>
     <label >HTTPSで接続しマイクが反応するようにしてください。</label>
     <br>
