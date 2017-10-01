@@ -91,7 +91,18 @@
             recognition.onresult = function (event) {
                 var results = event.results;
                 for (var i = event.resultIndex; i < results.length; i++) {
-                    if (results[i].isFinal) {
+                    if(!results[i].isFinal) {
+                        // var now_ta = document.getElementById('result_text').innerHTML;
+                        // var get_text = "[途中経過] " + results[i][0].transcript;
+                        // document.getElementById('result_text').innerHTML　= now_ta+get_text;
+                        
+                        // var now_ta = $("#result_text").val();
+                        // var get_text = "[途中経過] " + results[i][0].transcript;
+                        // $("#result_text").val(now_ta+get_text);
+                        document.getElementById('result_text').innerHTML = "[途中経過] " + results[i][0].transcript;
+                        flag_speech = 1;
+                    }
+                    else{
 
                         var now_ta = document.getElementById('onresult_text').innerHTML;
                         var get_text = results[i][0].transcript;
@@ -123,17 +134,7 @@
                         xdr.send();
                         vr_function();
                     }
-                    else {
-                        // var now_ta = document.getElementById('result_text').innerHTML;
-                        // var get_text = "[途中経過] " + results[i][0].transcript;
-                        // document.getElementById('result_text').innerHTML　= now_ta+get_text;
-                        
-                        // var now_ta = $("#result_text").val();
-                        // var get_text = "[途中経過] " + results[i][0].transcript;
-                        // $("#result_text").val(now_ta+get_text);
-                        document.getElementById('result_text').innerHTML = "[途中経過] " + results[i][0].transcript;
-                        flag_speech = 1;
-                    }
+                    
                 }
             }
             flag_speech = 0;
@@ -145,7 +146,7 @@
 
 <body>
 
-    <label id="ver">音声認識ページ　Ver 16</label>
+    <label id="ver">音声認識ページ　Ver 16.1</label>
     <br>
     <label >HTTPSで接続しマイクが反応するようにしてください。</label>
     <br>
