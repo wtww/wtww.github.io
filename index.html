@@ -60,8 +60,10 @@
             };
             recognition.onerror = function () {
                 document.getElementById('status').innerHTML = "エラー";
-                if (flag_speech == 0)
+                if (flag_speech == 0){
+                    recognition.abort();
                     vr_function();
+                    }
             };
             recognition.onsoundend = function () {
                 document.getElementById('status').innerHTML = "停止中";
@@ -69,7 +71,7 @@
                 // recognition.lang = 'ja';
                 // recognition.interimResults = true;
                 // recognition.continuous = true;
-                // vr_function();
+                vr_function();
             };
             recognition.onnomatch = function() {
                 document.getElementById('status').innerHTML = "不一致";
@@ -169,7 +171,7 @@
 </head>
 
 <body>
-    <label id="ver">Ver 14.11</label>
+    <label id="ver">Ver 14.12</label>
     <br>
     <label id="debug"></label>
     <br>
