@@ -61,7 +61,6 @@
             recognition.onerror = function () {
                 document.getElementById('status').innerHTML = "エラー";
                 if (flag_speech == 0){
-                    recognition.abort();
                     vr_function();
                     }
             };
