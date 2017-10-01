@@ -21,6 +21,10 @@
         function finish(){
             recognition.abort();//中断
             recognition.stop();//停止
+
+            if(recognition != null){
+                recognition = null;
+            }
         }
         function start(){
             document.getElementById('status').innerHTML = "start";
@@ -134,9 +138,10 @@
 </head>
 
 <body>
-    <label id="ver">Ver 14.13</label>
+
+    <label id="ver">音声認識ページ　Ver 14.13</label>
     <br>
-    <label id="debug"></label>
+    <label >HTTPSで接続しマイクが反応するようにしてください。</label>
     <br>
     <textarea id="result_text" cols="100" rows="10">
     </textarea>
