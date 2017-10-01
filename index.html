@@ -83,7 +83,7 @@
 
                         var now_ta = document.getElementById('onresult_text').innerHTML;
                         var get_text = results[i][0].transcript;
-                        document.getElementById('onresult_text').innerHTML　= get_text+'<br>'+now_ta;
+                        
 
                         // var now_ta = $("#result_text").val();
                         // var get_text = results[i][0].transcript;
@@ -115,7 +115,7 @@
                         
                         // request.send(null);
 
-                        var xdr = new XDomainRequest();
+                        var xdr = new XMLHttpRequest();
                         var sURL="https://sheltered-ridge-57048.herokuapp.com/noby/"+results[i][0].transcript;
                         now_ta = document.getElementById('onresult_text').innerHTML;
 
@@ -132,13 +132,18 @@
 
                         xdr.onerror = function () { 
                             //Error Occured
-                            document.getElementById('onresult_text').innerHTML　= now_ta+"[NG]";
+                            document.getElementById('onresult_text').innerHTML　= get_text+"[NG]"+'<br>'+now_ta;
                         };
 
                         xdr.onload = function() {
                             //success(xdr.responseText);
-                            document.getElementById('onresult_text').innerHTML　= now_ta+"[OK]";
+                            document.getElementById('onresult_text').innerHTML　= get_text+"[OK]"+'<br>'+now_ta;
                         }
+
+                        recognition = new webkitSpeechRecognition();
+                        recognition.lang = 'ja';
+                        recognition.interimResults = true;
+                        recognition.continuous = true;
 
                         vr_function();
                     }
@@ -154,10 +159,6 @@
                         flag_speech = 1;
                     }
                 }
-                recognition = new webkitSpeechRecognition();
-                recognition.lang = 'ja';
-                recognition.interimResults = true;
-                recognition.continuous = true;
             }
             flag_speech = 0;
             
