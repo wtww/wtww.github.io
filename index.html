@@ -39,7 +39,7 @@
         function vr_function() {
             recognition = new webkitSpeechRecognition();
             recognition.lang = 'ja';
-            recognition.interimResults = false;
+            recognition.interimResults = true;
             recognition.continuous = true;
             //語彙リスト
             recognition.grammars = speechRecognitionList;
