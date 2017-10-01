@@ -120,7 +120,7 @@
                         now_ta = document.getElementById('onresult_text').innerHTML;
 
 
-                        xdr.open("get", sURL);
+                        xdr.open('GET', sURL);
 
                         xdr.onprogress = function () {
                             //Progress
@@ -139,6 +139,7 @@
                             //success(xdr.responseText);
                             document.getElementById('onresult_text').innerHTML　= get_text+"[OK]"+'<br>'+now_ta;
                         }
+                        xdr.send();
 
                         recognition = new webkitSpeechRecognition();
                         recognition.lang = 'ja';
@@ -168,7 +169,7 @@
 </head>
 
 <body>
-    <label id="ver">Ver 14.10</label>
+    <label id="ver">Ver 14.11</label>
     <br>
     <label id="debug"></label>
     <br>
