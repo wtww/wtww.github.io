@@ -15,7 +15,8 @@
         // recognition.continuous = true;
 
         //grammarが語彙リスト
-        var grammar = '#JSGF V1.0; public <color> = ` えっと | えーと | えーっと | あの | あっ | えっーと ;'
+    
+        var grammar = '#JSGF V1.0; public <color> = みたいな | だいたい | ちょっと | 結構 | おもう | やつ | あのですね | たぶん | けっこう | あのー | がっつり | えーと ;'
         var speechRecognitionList = new SpeechGrammarList();
         speechRecognitionList.addFromString(grammar, 1);
         
@@ -143,7 +144,7 @@
 
 <body>
 
-    <label id="ver">音声認識ページ　Ver 14.14</label>
+    <label id="ver">音声認識ページ　Ver 15</label>
     <br>
     <label >HTTPSで接続しマイクが反応するようにしてください。</label>
     <br>
