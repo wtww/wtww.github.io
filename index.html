@@ -13,10 +13,10 @@
         // recognition.continuous = true;
 
         //grammarが語彙リスト
-        //var grammar = '#JSGF V1.0; public <color> = ` えっと | えーと | えーっと | あの | あっ | えっーと ;'
-        //var speechRecognitionList = new SpeechGrammarList();
-        //speechRecognitionList.addFromString(grammar, 1);
-        //recognition.grammars = speechRecognitionList;
+        var grammar = '#JSGF V1.0; public <color> = ` えっと | えーと | えーっと | あの | あっ | えっーと ;'
+        var speechRecognitionList = new window.SpeechGrammarList();
+        speechRecognitionList.addFromString(grammar, 1);
+        recognition.grammars = speechRecognitionList;
 
         function finish(){
             recognition.abort();//中断
@@ -35,7 +35,7 @@
         function vr_function() {
             recognition = new webkitSpeechRecognition();
             recognition.lang = 'ja';
-            recognition.interimResults = true;
+            recognition.interimResults = false;
             recognition.continuous = true;
 
             recognition.onstart = function () {
