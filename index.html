@@ -13,14 +13,14 @@
         recognition.continuous = true;
 
         //grammarが語彙リスト
-        var grammar = '#JSGF V1.0; public <color> = ` えっと | えーと | えーっと | あの | あっ | えっーと ;'
-        var speechRecognitionList = new SpeechGrammarList();
-        speechRecognitionList.addFromString(grammar, 1);
-        recognition.grammars = speechRecognitionList;
+        //var grammar = '#JSGF V1.0; public <color> = ` えっと | えーと | えーっと | あの | あっ | えっーと ;'
+        //var speechRecognitionList = new SpeechGrammarList();
+        //speechRecognitionList.addFromString(grammar, 1);
+        //recognition.grammars = speechRecognitionList;
 
         function finish(){
-            recognition.absort();
-            recognition.stop();
+            recognition.abort();//中断
+            recognition.stop();//停止
         }
         function start(){
             document.getElementById('status').innerHTML = "start";
@@ -168,7 +168,7 @@
 </head>
 
 <body>
-    <label id="ver">Ver 14.9</label>
+    <label id="ver">Ver 14.10</label>
     <br>
     <label id="debug"></label>
     <br>
