@@ -7,6 +7,8 @@
     <script>
         var flag_speech = 0;
         window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+        SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList;
+
         var recognition = null;
         // recognition.lang = 'ja';
         // recognition.interimResults = true;
@@ -14,7 +16,7 @@
 
         //grammarが語彙リスト
         var grammar = '#JSGF V1.0; public <color> = ` えっと | えーと | えーっと | あの | あっ | えっーと ;'
-        var speechRecognitionList = new window.SpeechGrammarList();
+        var speechRecognitionList = new SpeechGrammarList();
         speechRecognitionList.addFromString(grammar, 1);
         recognition.grammars = speechRecognitionList;
 
